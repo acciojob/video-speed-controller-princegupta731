@@ -1,6 +1,6 @@
 // Select elements
 const player = document.querySelector('.player');
-const video = player.querySelector('.viewer');
+const video = player.querySelector('.player__video');
 const toggle = player.querySelector('.toggle');
 const progress = player.querySelector('.progress');
 const progressFilled = player.querySelector('.progress__filled');
@@ -8,7 +8,7 @@ const volume = player.querySelector('.volume');
 const playbackSpeed = player.querySelector('.playbackSpeed');
 const skipButtons = player.querySelectorAll('.skip-button');
 
-// Play / Pause toggle
+// Toggle Play / Pause
 function togglePlay() {
   if (video.paused) {
     video.play();
@@ -29,7 +29,7 @@ function handleProgress() {
   progressFilled.style.width = `${percent}%`;
 }
 
-// Set video time when clicking progress bar
+// Scrub through video
 function scrub(e) {
   const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
   video.currentTime = scrubTime;
@@ -45,7 +45,7 @@ function handleSpeed() {
   video.playbackRate = playbackSpeed.value;
 }
 
-// Skip buttons
+// Skip forward / backward
 function skip() {
   const skipValue = parseFloat(this.dataset.skip);
   video.currentTime += skipValue;
